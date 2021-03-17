@@ -21,7 +21,24 @@ document.addEventListener("DOMContentLoaded", () => {
     const contactsName = document.querySelector('input[name="name"]'),
     contactsEmail = document.querySelector('input[name="email"]'),
     contactsPolicy = document.querySelector('#policyCheck'),
-    contactsBtn = document.querySelector('.contacts__btn');
+    contactsBtn = document.querySelector('.contacts__btn'),
+    contactsError = document.querySelectorAll('.contacts__input-error');
+
+    for (let i = 0; i < 3; i++) {
+        contactsError[i].style.display = 'none';
+    }
+
+    contactsName.addEventListener('click', () => {
+        contactsError[0].style.display = 'none';
+    });
+
+    contactsEmail.addEventListener('click', () => {
+        contactsError[1].style.display = 'none';
+    });
+
+    contactsPolicy.addEventListener('click', () => {
+        contactsError[2].style.display = 'none';
+    });
 
     function validateForm() {
         let cNV = contactsName.value,
@@ -30,19 +47,23 @@ document.addEventListener("DOMContentLoaded", () => {
             reg = /^([A-Za-z0-9_\-\.])+\@([A-Za-z0-9_\-\.])+\.([A-Za-z]{2,4})$/;
 
         //validate imput Name, Email, Policy.
+        
         if (cNV == "" || cNV.length < 2 || /[^а-яА-Яa-zA-Z0-9\-]/.test(cNV)) {
             contactsName.classList.add('invalid');
-            alert("Введите своё имя, имя не должно быть короче 2 символов");
-            event.preventDefault();
-            
+            contactsError[0].style.display = '';
+            /* alert("Введите своё имя, имя не должно быть короче 2 символов"); */
+            event.preventDefault();     
         } else {
             contactsName.classList.remove('invalid');
             contactsName.classList.add('valid');
+            
+
         };
 
         if (cEV == "" || reg.test(cEV) == false) {
             contactsEmail.classList.add('invalid');
-            alert("Введите свой email");
+            /* alert("Введите свой email"); */
+            contactsError[1].style.display = '';
             event.preventDefault();
            
         } else {
@@ -51,7 +72,8 @@ document.addEventListener("DOMContentLoaded", () => {
         };
 
         if (cPC == false) {
-            alert("Чтобы продолжить установить флажок согласия с политикой конфиденциальности");
+            contactsError[2].style.display = '';
+            /* alert("Чтобы продолжить установить флажок согласия с политикой конфиденциальности"); */
             event.preventDefault();
         };
         
@@ -60,9 +82,10 @@ document.addEventListener("DOMContentLoaded", () => {
     
     contactsBtn.addEventListener('click', () => {
         validateForm();
-    });
+    });   
+
     
-    
+
 });
 
 /* $('form').submit(function(e) {
