@@ -82,7 +82,23 @@ document.addEventListener("DOMContentLoaded", () => {
     
     contactsBtn.addEventListener('click', () => {
         validateForm();
-    });   
+    });
+    
+    $('#contacts-form').submit(function(e) {
+        e.preventDefault();
+        $.ajax({
+            type: "POST",
+            url: "mailer/smart.php",
+            data: $(this).serialize()
+        }).done(function() {
+            $(this).find("input").val("");
+            /* $('#consultation, #order').fadeOut();
+            $('.overlay, #thanks').fadeIn('slow'); */
+
+            $('#contacts-form').trigger('reset');
+        });
+        return false;
+    });
 
     
 
