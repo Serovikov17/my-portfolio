@@ -11,3 +11,21 @@
         background: $main-color;
     }
 }
+
+@mixin message_error {
+    min-width: 250px;
+    padding: 5px 5px;
+    position: relative;
+    background: $main-color;
+    border-radius: 3px;
+    &:before {
+        content: ""; 
+        border: solid transparent;
+        position: absolute;    
+        left: 8px;    
+        bottom: 100%;
+        border-bottom-color:  $main-color;
+        border-width: 9px;
+        margin-left: 0;
+    }
+}
