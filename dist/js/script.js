@@ -1,16 +1,24 @@
 document.addEventListener("DOMContentLoaded", () => {
+
+    // Оpen / close the menu.
     const hamburger = document.querySelector('.hamburger'),
-    menu = document.querySelector('.menu'),
-    closeElem = document.querySelector('.menu__close');
+          menu = document.querySelector('.menu'),
+          closeElem = document.querySelector('.menu__close'),
+          menuOverlay = document.querySelector('.menu__overlay');
 
     hamburger.addEventListener('click', () => {
-    menu.classList.add('active');
+        menu.classList.add('active');
     });
 
-    closeElem.addEventListener('click', () => {
-    menu.classList.remove('active');
-    });
+    function closeMenu () {
+        menu.classList.remove('active');
+    }
 
+    closeElem.addEventListener('click', closeMenu);
+
+    menuOverlay.addEventListener('click', closeMenu);
+
+    // Сalculating the skill rating.
     const counters = document.querySelectorAll('.skills__ratings-counter'),
           lines = document.querySelectorAll('.skills__ratings-line span');
 
@@ -18,11 +26,12 @@ document.addEventListener("DOMContentLoaded", () => {
         lines[i].style.width = item.innerHTML;
     });
 
+    //Show / remove the notification in the contacts section.
     const contactsName = document.querySelector('input[name="name"]'),
-    contactsEmail = document.querySelector('input[name="email"]'),
-    contactsPolicy = document.querySelector('#policyCheck'),
-    contactsBtn = document.querySelector('.contacts__btn'),
-    contactsError = document.querySelectorAll('.contacts__input-error');
+          contactsEmail = document.querySelector('input[name="email"]'),
+          contactsPolicy = document.querySelector('#policyCheck'),
+          contactsBtn = document.querySelector('.contacts__btn'),
+          contactsError = document.querySelectorAll('.contacts__input-error');
 
     for (let i = 0; i < 3; i++) {
         contactsError[i].style.display = 'none';
@@ -40,6 +49,8 @@ document.addEventListener("DOMContentLoaded", () => {
         contactsError[2].style.display = 'none';
     });
 
+
+    //Validate form.
     function validateForm() {
         let cNV = contactsName.value,
             cEV = contactsEmail.value,
@@ -56,34 +67,30 @@ document.addEventListener("DOMContentLoaded", () => {
         } else {
             contactsName.classList.remove('invalid');
             contactsName.classList.add('valid');
-            
-
-        };
+        }
 
         if (cEV == "" || reg.test(cEV) == false) {
             contactsEmail.classList.add('invalid');
             /* alert("Введите свой email"); */
             contactsError[1].style.display = '';
             event.preventDefault();
-           
         } else {
             contactsEmail.classList.remove('invalid');
             contactsEmail.classList.add('valid');
-        };
+        }
 
         if (cPC == false) {
             contactsError[2].style.display = '';
             /* alert("Чтобы продолжить установить флажок согласия с политикой конфиденциальности"); */
             event.preventDefault();
-        };
+        }
         
         return true;
-    };
+    }
     
-    contactsBtn.addEventListener('click', () => {
-        validateForm();
-    });
+    contactsBtn.addEventListener('click', validateForm);
     
+    //Sending data from the form to the mail
     $('#contacts-form').submit(function(e) {
         e.preventDefault();
         $.ajax({
