@@ -1,7 +1,7 @@
 # my-portfolio
 My portfolio project describing:
-  - brief information about me;
-  - how will I be useful;
-  - what I use in my work;
-  - my works and beginnings;
-  - how to contact me.
+  - Brief information about me;
+  - How will I be useful;
+  - What I use in my work;
+  - My works and beginnings;
+  - How to contact me.
