@@ -1,18 +1,21 @@
 .promo {
     min-height: 100vh;
     position: relative;
-    background: url('../img/main_bg.jpg') no-repeat 50%/cover;
+    background: #23afc8 URL(../img/screensaver.png) 89% 52%/50% auto no-repeat;
     padding-top: 205px;
+
     &__title {
-        width: 490px;
+        max-width: 550px;
         margin-top: 10px;
     }
+
     &__subtitle {
         position: relative;
         padding-left: 10px;
         z-index: 2;
         @include before_circle;
     }
+
     &__btns {
         margin-top: 25px;
         display: flex;
@@ -20,12 +23,25 @@
         justify-content: space-between;
         width: 270px;
     }
+
     &__link {
         color: #000;
         font-weight: bold;
+
         &:hover {
             color: #000;
             text-decoration: none;
         }
     }
+
+/*     &__screensaver {
+        position: absolute;
+        top: 15%;
+        left: 40%;
+        img {
+            height: 570px;
+            width: 800px;
+        }
+
+    } */
 }

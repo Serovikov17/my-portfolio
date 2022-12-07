@@ -43,7 +43,6 @@
         grid-template: 45px 190px 45px / repeat(2, 280px);
         justify-content: space-between;
         row-gap: 27px;
-        
         label {
             display: block;
             position: absolute;
@@ -88,10 +87,9 @@
             &.invalid{
                 box-shadow:inset 0 0 0 1000px rgba(248, 76, 76, 0.719);
             }
-            
         }
         &-error, #policyCheck {
-            @include message_error
+            @include message_error;
             top: -12px;
             left: 30px;
             z-index: 3;

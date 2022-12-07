@@ -34,7 +34,6 @@
             &:before {
                 display: none;
             }
-            
         }
         &:hover {
             text-decoration: none;
@@ -42,9 +41,8 @@
             transform: scale(1.05); 
             .item-text {
                 transition: 0.9s;
-                opacity: 1;              
+                opacity: 1;
             }
         }
-        
     }
 }
