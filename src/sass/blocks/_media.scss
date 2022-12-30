@@ -100,6 +100,11 @@
         &__wrapper {
             grid-template-columns: 300px 380px;
         }
+        &__photo {
+            img {
+                object-position: 50% 10%;
+            }
+        }
 
         &__skills {
             grid-template-columns: 380px;
